@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Flask Task | Home </title>
+{% endblock %}
+
+{% block body %}
+<div class="page">
+
+
+<div class="board">
+    <div class="header">Flask Task</div>
+
+    <div class="body">
+
+    <div class="table">
+        <div class="row table_head">
+            <div class="col"><span>Task</span></div>
+            <div class="col"><span>Date</span></div>
+            <div class="col"><span></span></div>
+        </div>
+        {% for task in tasks %}
+        <div class="row task">
+            <div class="col"><span>{{ task.content }}</span></div>
+            <div class="col"><span>{{ task.date_created.date() }}</span></div>
+            <div class="col"><span><a href="/delete/{{task.id}}"><svg width="15" height="15" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 3.53553L3.53553 0L19.799 16.2635L16.2635 19.799L0 3.53553Z" fill="black"/>
+                <path d="M16.2635 3.75509e-06L19.799 3.53554L3.53554 19.799L2.90017e-06 16.2635L16.2635 3.75509e-06Z" fill="black"/>
+                </svg>
+                </a></span></div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+    <div class="footer">
+        <form class="task_form" action="/" method="POST">
+        <input type="text" name="content" id="content" placeholder="Enter a new Task ...">
+        <input class="btn" type="submit" value="Add Task">
+        </form>
+    </div>
+
+
+</div>
+
+</div>
+{% endblock %}
+
